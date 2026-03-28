@@ -915,82 +915,82 @@ function RoadmapSection() {
     { label: "발열", icon: "🌡️", status: "now", desc: "현재 집중" },
     { label: "감기 · 기침", icon: "🤧", status: "next", desc: "" },
     { label: "구토 · 설사", icon: "💊", status: "next", desc: "" },
-    { label: "해열제 · 항생제", icon: "💉", status: "future", desc: "" },
+    { label: "해열제\n항생제", icon: "💉", status: "future", desc: "" },
     { label: "예방접종", icon: "🛡️", status: "future", desc: "" },
     { label: "성장 · 영양", icon: "🌱", status: "future", desc: "" },
   ];
+
+  if (isMobile) {
+    return (
+      <section style={{ padding: "60px clamp(16px, 5vw, 80px)", background: COLORS.warmWhite }}>
+        <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
+          <FadeIn>
+            <p style={{ fontFamily: FONTS.body, fontSize: 12, fontWeight: 600, textTransform: "uppercase", letterSpacing: 2, color: COLORS.sage, marginBottom: 16 }}>Roadmap</p>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <h2 style={{ fontFamily: FONTS.display, fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 700, color: COLORS.navy, lineHeight: 1.35, letterSpacing: -0.8, marginBottom: 12 }}>발열에서 시작합니다</h2>
+          </FadeIn>
+          <FadeIn delay={0.15}>
+            <p style={{ fontFamily: FONTS.body, fontSize: 15, lineHeight: 1.7, color: COLORS.warmGray, marginBottom: 32 }}>가장 긴급하고 빈번한 '발열'부터 시작해, 소아 건강 전 영역으로 확장합니다.</p>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {phases.map((p, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{
+                    width: 40, height: 40, borderRadius: 12, flexShrink: 0,
+                    display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18,
+                    background: p.status === "now" ? COLORS.coral : p.status === "next" ? COLORS.sageLight : COLORS.lightGray,
+                    border: p.status === "now" ? `2px solid ${COLORS.coral}` : `1.5px solid ${COLORS.border}`,
+                  }}>{p.icon}</div>
+                  <p style={{ fontFamily: FONTS.body, fontWeight: 600, fontSize: 14, color: p.status === "now" ? COLORS.coral : COLORS.navy }}>
+                    {p.label.replace("\n", " · ")}{p.desc ? ` — ${p.desc}` : ""}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section style={{
-      padding: isMobile ? "60px clamp(16px, 5vw, 80px)" : "80px clamp(20px, 5vw, 80px)",
-      background: COLORS.warmWhite,
-    }}>
+    <section style={{ padding: "80px clamp(20px, 5vw, 80px)", background: COLORS.warmWhite }}>
       <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
         <FadeIn>
-          <p style={{
-            fontFamily: FONTS.body, fontSize: 12, fontWeight: 600,
-            textTransform: "uppercase", letterSpacing: 2,
-            color: COLORS.sage, marginBottom: 16,
-          }}>Roadmap</p>
+          <p style={{ fontFamily: FONTS.body, fontSize: 12, fontWeight: 600, textTransform: "uppercase", letterSpacing: 2, color: COLORS.sage, marginBottom: 16 }}>Roadmap</p>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <h2 style={{
-            fontFamily: FONTS.display, fontSize: "clamp(24px, 3vw, 34px)",
-            fontWeight: 700, color: COLORS.navy, lineHeight: 1.35,
-            letterSpacing: -0.8, marginBottom: 12,
-          }}>
-            발열에서 시작합니다
-          </h2>
+          <h2 style={{ fontFamily: FONTS.display, fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 700, color: COLORS.navy, lineHeight: 1.35, letterSpacing: -0.8, marginBottom: 12 }}>발열에서 시작합니다</h2>
         </FadeIn>
         <FadeIn delay={0.15}>
-          <p style={{
-            fontFamily: FONTS.body, fontSize: 15, lineHeight: 1.7,
-            color: COLORS.warmGray, marginBottom: 40,
-          }}>
-            가장 긴급하고 빈번한 '발열'부터 시작해, 소아 건강 전 영역으로 확장합니다.
-          </p>
+          <p style={{ fontFamily: FONTS.body, fontSize: 15, lineHeight: 1.7, color: COLORS.warmGray, marginBottom: 40 }}>가장 긴급하고 빈번한 '발열'부터 시작해, 소아 건강 전 영역으로 확장합니다.</p>
         </FadeIn>
         <FadeIn delay={0.2}>
-          <div style={{
-            display: "flex",
-            flexDirection: isMobile ? "column" : "row",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: isMobile ? 8 : 4,
-          }}>
+          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", gap: 0 }}>
             {phases.map((p, i) => (
-              <div key={i} style={{
-                display: "flex", alignItems: isMobile ? "flex-start" : "center",
-                flexDirection: isMobile ? "row" : "column",
-                gap: isMobile ? 12 : 6,
-              }}>
-                <div style={{
-                  display: "flex", flexDirection: "column", alignItems: "center",
-                }}>
+              <div key={i} style={{ display: "flex", alignItems: "center" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 88 }}>
                   <div style={{
-                    width: isMobile ? 44 : 52, height: isMobile ? 44 : 52,
-                    borderRadius: 14, display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: isMobile ? 20 : 24,
+                    width: 52, height: 52, borderRadius: 14,
+                    display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24,
                     background: p.status === "now" ? COLORS.coral : p.status === "next" ? COLORS.sageLight : COLORS.lightGray,
                     border: p.status === "now" ? `2px solid ${COLORS.coral}` : `1.5px solid ${COLORS.border}`,
                     boxShadow: p.status === "now" ? `0 4px 12px ${COLORS.coral}33` : "none",
+                    marginBottom: 8,
                   }}>{p.icon}</div>
-                </div>
-                <div style={{ textAlign: isMobile ? "left" : "center" }}>
                   <p style={{
-                    fontFamily: FONTS.body, fontWeight: 600,
-                    fontSize: 13, color: p.status === "now" ? COLORS.coral : COLORS.navy,
+                    fontFamily: FONTS.body, fontWeight: 600, fontSize: 12,
+                    color: p.status === "now" ? COLORS.coral : COLORS.navy,
+                    lineHeight: 1.3, whiteSpace: "pre-line",
                   }}>{p.label}</p>
                   {p.desc && (
-                    <p style={{
-                      fontFamily: FONTS.body, fontSize: 11, color: COLORS.coral, fontWeight: 600,
-                    }}>{p.desc}</p>
+                    <p style={{ fontFamily: FONTS.body, fontSize: 10, color: COLORS.coral, fontWeight: 600, marginTop: 2 }}>{p.desc}</p>
                   )}
                 </div>
-                {i < phases.length - 1 && !isMobile && (
-                  <span style={{
-                    fontSize: 14, color: COLORS.border, margin: "0 2px",
-                    alignSelf: "center",
-                  }}>→</span>
+                {i < phases.length - 1 && (
+                  <span style={{ fontSize: 14, color: COLORS.border, margin: "0 4px", paddingBottom: 28 }}>→</span>
                 )}
               </div>
             ))}
