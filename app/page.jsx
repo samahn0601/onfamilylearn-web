@@ -41,8 +41,9 @@ const TEAM = [
     badge: "가정의학과 전문의",
     color: COLORS.coral,
     colorLight: COLORS.coralLight,
-    desc: "45년간 해결되지 않은 문제를, 의사가 직접, AI와 함께 풉니다.",
+    desc: "모바일닥터 CMO(최고의료책임자). '열나요' 앱 개발자. 200만+ 부모가 사용하는 소아 열관리 서비스를 만든 경험을 바탕으로, AI 기반 부모 교육 플랫폼을 창업합니다.",
     isHuman: true,
+    img: "/team/sam.png",
   },
   {
     name: "레나",
@@ -52,7 +53,7 @@ const TEAM = [
     color: "#534AB7",
     colorLight: "#EEEDFE",
     desc: "전략과 경영 총괄. 팀 조율과 사업 방향을 잡습니다.",
-    emoji: "💡",
+    img: "/team/lena.png",
   },
   {
     name: "하나",
@@ -62,7 +63,7 @@ const TEAM = [
     color: "#0F6E56",
     colorLight: "#E1F5EE",
     desc: "운영과 스프린트 관리. 꼼꼼하게 모든 태스크를 추적합니다.",
-    emoji: "📋",
+    img: "/team/hana.png",
   },
   {
     name: "유리",
@@ -72,7 +73,7 @@ const TEAM = [
     color: "#D4537E",
     colorLight: "#FBEAF0",
     desc: "마케팅과 콘텐츠 전략. 부모님들에게 신뢰를 전달합니다.",
-    emoji: "📣",
+    img: "/team/yuri.png",
   },
   {
     name: "서윤",
@@ -82,7 +83,7 @@ const TEAM = [
     color: "#185FA5",
     colorLight: "#E6F1FB",
     desc: "의료 콘텐츠 검증과 SSOT 관리. 정확성에 타협하지 않습니다.",
-    emoji: "🩺",
+    img: "/team/seoyun.png",
   },
   {
     name: "지수",
@@ -92,7 +93,7 @@ const TEAM = [
     color: "#BA7517",
     colorLight: "#FAEEDA",
     desc: "기술 아키텍처와 인프라. 팩트 기반으로 기술을 설계합니다.",
-    emoji: "💻",
+    img: "/team/jisu.png",
   },
   {
     name: "민지",
@@ -102,7 +103,7 @@ const TEAM = [
     color: "#3B6D11",
     colorLight: "#EAF3DE",
     desc: "예산과 사업비 관리. 숫자 앞에서 타협하지 않습니다.",
-    emoji: "💰",
+    img: "/team/minji.png",
   },
 ];
 
@@ -110,22 +111,24 @@ const SERVICES = [
   {
     name: "열나요",
     tagline: "오늘 밤, 아이의 열을 해결합니다",
-    desc: "소아 발열 실시간 AI 상담 앱. 체중 기반 해열제 용량 계산, 응급 판단, 해열 패턴 추적까지. 전문의가 검증한 SSOT(Single Source of Truth) 기반으로 정확하고 안전한 정보만 제공합니다.",
-    features: ["체중 기반 해열제 용량 자동 계산", "8대 응급 경고 신호 실시간 감지", "SSOT 기반 의료 정보 — AI 환각 차단", "해열 패턴 추적 및 재진료 알림"],
+    desc: "2017년 출시 이후 200만 이상의 부모가 선택한 소아 발열 관리 앱. 체중 기반 해열제 용량 계산, 교차 복용 경고, 열 패턴 추적까지. 6,000만 건의 체온 데이터와 2,000만 건의 해열제 복용 데이터가 축적된 국내 최대 소아 열관리 플랫폼입니다.",
+    features: ["체중 기반 해열제 용량 자동 계산", "교차 복용 경고 및 하루 허용량 관리", "열 패턴 추적 및 재진료 알림", "독감 스크리닝 AI 모델 (빅데이터 기반)"],
     color: COLORS.coral,
     colorLight: COLORS.coralLight,
     icon: "🌡️",
-    status: "POC 완료 → 프로덕션 전환 중",
+    status: "2017~ · 200만+ 다운로드 · 서비스 운영 중",
+    note: "모바일닥터에서 운영 중인 서비스입니다. 온패밀리런과 시너지 파트너십을 구축합니다.",
   },
   {
     name: "OnFamily Learn",
     tagline: "다음 10년의 부모 역량을 만듭니다",
-    desc: "의사가 직접 만든 부모 교육 플랫폼. 아이 건강 문제를 이해하고 대처하는 능력을 키우는 체계적인 학습 콘텐츠. 독감, 해열제, 예방접종부터 응급 상황까지.",
-    features: ["전문의 검증 Wiki 콘텐츠", "상황별 의사결정 가이드", "연령맞춤 건강 캘린더", "커뮤니티 Q&A"],
+    desc: "의사가 직접 만든 부모 교육 플랫폼. 아이 건강 문제를 이해하고 대처하는 능력을 키우는 체계적인 학습 콘텐츠. 독감, 해열제, 예방접종부터 응급 상황까지. 열나요의 실시간 대응 경험을 교육으로 확장합니다.",
+    features: ["전문의 검증 Wiki 콘텐츠", "상황별 의사결정 가이드", "SSOT 기반 AI 학습 — 환각 차단", "연령맞춤 건강 캘린더"],
     color: COLORS.sage,
     colorLight: COLORS.sageLight,
     icon: "📚",
-    status: "콘텐츠 구축 중",
+    status: "콘텐츠 구축 중 · 창업 준비 단계",
+    note: null,
   },
 ];
 
@@ -233,10 +236,10 @@ function HeroSection() {
       <FadeIn delay={0.2}>
         <p style={{
           fontFamily: FONTS.body, fontSize: 17, lineHeight: 1.7,
-          color: COLORS.warmGray, maxWidth: 520, margin: "0 0 40px",
+          color: COLORS.warmGray, maxWidth: 540, margin: "0 0 40px",
         }}>
-          가정의학과 전문의가 설계하고, AI 팀이 실행합니다.<br/>
-          부모가 아이의 건강을 이해하고 올바르게 대처하는 세상.
+          200만 부모가 선택한 '열나요' 앱을 만든 가정의학과 전문의가<br/>
+          AI 에이전트 팀과 함께 부모 교육의 새로운 기준을 세웁니다.
         </p>
       </FadeIn>
       <FadeIn delay={0.3}>
@@ -300,7 +303,7 @@ function MissionSection() {
           }}>
             온패밀리런은 가정의학과 전문의가 직접 검증한 의료 정보만을 기반으로,
             부모가 아이의 건강 문제를 이해하고 올바르게 대처할 수 있도록 돕습니다.
-            AI가 임의로 만들어낸 정보가 아닌, 전문의의 임상 경험과 최신 근거가 담긴 신뢰할 수 있는 지식을 전달합니다.
+            '열나요' 앱으로 10년간 쌓은 실전 경험과 데이터를 교육으로 확장합니다.
           </p>
         </FadeIn>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
@@ -342,7 +345,7 @@ function ServicesSection() {
             fontWeight: 700, color: COLORS.navy, lineHeight: 1.35,
             letterSpacing: -1, marginBottom: 48,
           }}>
-            투트랙 전략으로<br/>소아 건강의 모든 순간을 커버합니다
+            실시간 대응에서 장기 교육까지<br/>소아 건강의 모든 순간을 커버합니다
           </h2>
         </FadeIn>
         <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
@@ -358,7 +361,7 @@ function ServicesSection() {
                   <div style={{
                     display: "inline-flex", alignItems: "center", gap: 8,
                     padding: "4px 12px", borderRadius: 6,
-                    background: s.colorLight, fontSize: 13,
+                    background: s.colorLight, fontSize: 12,
                     fontFamily: FONTS.body, fontWeight: 600, color: s.color,
                     marginBottom: 16,
                   }}>
@@ -374,8 +377,16 @@ function ServicesSection() {
                   }}>{s.tagline}</p>
                   <p style={{
                     fontFamily: FONTS.body, fontSize: 14, lineHeight: 1.7,
-                    color: COLORS.warmGray,
+                    color: COLORS.warmGray, marginBottom: s.note ? 12 : 0,
                   }}>{s.desc}</p>
+                  {s.note && (
+                    <p style={{
+                      fontFamily: FONTS.body, fontSize: 12, lineHeight: 1.5,
+                      color: COLORS.sageMuted, fontStyle: "italic",
+                      padding: "8px 12px", borderRadius: 6,
+                      background: COLORS.sageLight,
+                    }}>{s.note}</p>
+                  )}
                 </div>
                 <div style={{
                   padding: "36px 28px",
@@ -461,18 +472,15 @@ function TeamSection() {
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
-                  <div style={{
-                    width: 44, height: 44, borderRadius: 12,
-                    background: m.colorLight,
-                    border: `1.5px solid ${m.color}33`,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: m.isHuman ? 13 : 20,
-                    fontFamily: m.isHuman ? FONTS.body : "inherit",
-                    fontWeight: m.isHuman ? 700 : 400,
-                    color: m.isHuman ? m.color : "inherit",
-                  }}>
-                    {m.isHuman ? "Dr" : m.emoji}
-                  </div>
+                  <img
+                    src={m.img}
+                    alt={m.name}
+                    style={{
+                      width: 56, height: 56, borderRadius: 14,
+                      objectFit: "cover",
+                      border: `2px solid ${m.color}22`,
+                    }}
+                  />
                   <div>
                     <p style={{
                       fontFamily: FONTS.body, fontWeight: 700, fontSize: 15,
@@ -615,9 +623,7 @@ function ContactSection() {
         fontFamily: FONTS.body, fontSize: 12, color: COLORS.warmGray,
       }}>
         <span>© 2026 MoDoc AI (온패밀리런). All rights reserved.</span>
-        <span style={{ fontFamily: FONTS.mono, fontSize: 11, color: COLORS.border }}>
-          modocai/onfamilylearn-content
-        </span>
+        <span>열나요 서비스는 (주)모바일닥터에서 운영합니다.</span>
       </div>
     </section>
   );
