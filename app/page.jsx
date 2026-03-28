@@ -133,7 +133,7 @@ const SERVICES = [
     name: "OnFamily Learn",
     tagline: "다음 10년의 부모 역량을 만듭니다",
     desc: "의사가 직접 만든 부모 교육 플랫폼. 아이 건강 문제를 이해하고 대처하는 능력을 키우는 체계적인 학습 콘텐츠. 독감, 해열제, 예방접종부터 응급 상황까지. 열나요의 실시간 대응 경험을 교육으로 확장합니다.",
-    features: ["전문의 검증 Wiki 콘텐츠", "상황별 의사결정 가이드", "SSOT 기반 AI 학습 — 환각 차단", "연령맞춤 건강 캘린더"],
+    features: ["전문의 검증 Wiki 콘텐츠", "상황별 의사결정 가이드", "검증된 정보 기반 AI 학습 — 환각 차단", "연령맞춤 건강 캘린더"],
     color: COLORS.sage,
     colorLight: COLORS.sageLight,
     icon: "📚",
@@ -143,10 +143,10 @@ const SERVICES = [
 ];
 
 const RULES = [
-  { icon: "🛡️", title: "SSOT 기반", desc: "모든 의료 정보는 전문의가 검증한 단일 진실 소스에서만 제공됩니다" },
-  { icon: "🚫", title: "AI 환각 차단", desc: "SSOT에 없는 의료 정보는 AI가 절대 스스로 생성하지 못합니다" },
+  { icon: "🛡️", title: "단일 진실 소스(SSOT)", desc: "모든 의료 정보는 전문의가 검증한 단 하나의 정보 원천에서만 제공됩니다" },
+  { icon: "🚫", title: "AI 환각 차단", desc: "검증된 정보 원천에 없는 의료 정보는 AI가 절대 스스로 생성하지 못합니다" },
   { icon: "⚕️", title: "전문의 최종 승인", desc: "약물 용량, 금기, 응급 판단은 반드시 전문의 검증을 거칩니다" },
-  { icon: "🔒", title: "의료 절대 규칙", desc: "8대 안전 규칙이 시스템 최상위에 하드코딩되어 있습니다" },
+  { icon: "🔒", title: "의료 절대 규칙", desc: "4대 핵심 안전 규칙이 시스템 최상위에 하드코딩되어 있습니다" },
 ];
 
 function useInView(threshold = 0.15) {
@@ -160,6 +160,17 @@ function useInView(threshold = 0.15) {
     return () => obs.disconnect();
   }, [threshold]);
   return [ref, visible];
+}
+
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < breakpoint);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, [breakpoint]);
+  return isMobile;
 }
 
 function FadeIn({ children, delay = 0, style = {} }) {
@@ -177,31 +188,60 @@ function FadeIn({ children, delay = 0, style = {} }) {
 }
 
 function Nav({ active }) {
+  const isMobile = useIsMobile();
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <nav style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
       background: "rgba(251,248,243,0.92)", backdropFilter: "blur(12px)",
       borderBottom: `1px solid ${COLORS.border}`,
-      display: "flex", alignItems: "center", justifyContent: "space-between",
-      padding: "0 clamp(16px, 4vw, 48px)", height: 56,
+      padding: "0 clamp(16px, 4vw, 48px)",
       fontFamily: FONTS.body,
     }}>
-      <a href="#hero" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 8 }}>
-        <img src="/logo2.jpg" alt="Onfamily Learn" style={{ width: 32, height: 32, borderRadius: 6, objectFit: "contain" }} />
-        <span style={{ fontFamily: FONTS.display, fontWeight: 700, fontSize: 17, color: COLORS.navy, letterSpacing: -0.5 }}>온패밀리런</span>
-        <span style={{ fontFamily: FONTS.body, fontWeight: 500, fontSize: 13, color: COLORS.warmGray, letterSpacing: -0.2 }}>Onfamily Learn</span>
-      </a>
-      <div style={{ display: "flex", gap: 4 }}>
-        {NAV_ITEMS.map(n => (
-          <a key={n.id} href={`#${n.id}`} style={{
-            textDecoration: "none", padding: "6px 12px", borderRadius: 6,
-            fontSize: 13, fontWeight: 500, letterSpacing: -0.2,
-            color: active === n.id ? COLORS.sage : COLORS.warmGray,
-            background: active === n.id ? COLORS.sageLight : "transparent",
-            transition: "all 0.2s",
-          }}>{n.label}</a>
-        ))}
+      <div style={{
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        height: 56,
+      }}>
+        <a href="#hero" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 8 }}>
+          <img src="/logo2.png" alt="Onfamily Learn" style={{ width: 32, height: 32, borderRadius: 6, objectFit: "contain" }} />
+          <span style={{ fontFamily: FONTS.display, fontWeight: 700, fontSize: 17, color: COLORS.navy, letterSpacing: -0.5 }}>온패밀리런</span>
+          {!isMobile && <span style={{ fontFamily: FONTS.body, fontWeight: 500, fontSize: 13, color: COLORS.warmGray, letterSpacing: -0.2 }}>Onfamily Learn</span>}
+        </a>
+        {isMobile ? (
+          <button onClick={() => setMenuOpen(!menuOpen)} style={{
+            background: "none", border: "none", cursor: "pointer", padding: 8,
+            fontSize: 22, color: COLORS.navy, lineHeight: 1,
+          }}>{menuOpen ? "✕" : "☰"}</button>
+        ) : (
+          <div style={{ display: "flex", gap: 4 }}>
+            {NAV_ITEMS.map(n => (
+              <a key={n.id} href={`#${n.id}`} style={{
+                textDecoration: "none", padding: "6px 12px", borderRadius: 6,
+                fontSize: 13, fontWeight: 500, letterSpacing: -0.2,
+                color: active === n.id ? COLORS.sage : COLORS.warmGray,
+                background: active === n.id ? COLORS.sageLight : "transparent",
+                transition: "all 0.2s",
+              }}>{n.label}</a>
+            ))}
+          </div>
+        )}
       </div>
+      {isMobile && menuOpen && (
+        <div style={{
+          display: "flex", flexDirection: "column", gap: 4,
+          padding: "8px 0 16px",
+          borderTop: `1px solid ${COLORS.border}`,
+        }}>
+          {NAV_ITEMS.map(n => (
+            <a key={n.id} href={`#${n.id}`} onClick={() => setMenuOpen(false)} style={{
+              textDecoration: "none", padding: "10px 12px", borderRadius: 8,
+              fontSize: 15, fontWeight: 500,
+              color: active === n.id ? COLORS.sage : COLORS.warmGray,
+              background: active === n.id ? COLORS.sageLight : "transparent",
+            }}>{n.label}</a>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }
@@ -346,9 +386,10 @@ function MissionSection() {
 }
 
 function ServicesSection() {
+  const isMobile = useIsMobile();
   return (
     <section id="services" style={{
-      padding: "100px clamp(20px, 5vw, 80px)",
+      padding: isMobile ? "60px clamp(16px, 5vw, 80px)" : "100px clamp(20px, 5vw, 80px)",
       background: COLORS.cream,
     }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
@@ -372,12 +413,12 @@ function ServicesSection() {
           {SERVICES.map((s, i) => (
             <FadeIn key={i} delay={0.1 * i}>
               <div style={{
-                display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0,
+                display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 0,
                 borderRadius: 16, overflow: "hidden",
                 border: `1px solid ${COLORS.border}`,
                 background: COLORS.warmWhite,
               }}>
-                <div style={{ padding: "36px 32px" }}>
+                <div style={{ padding: isMobile ? "24px 20px" : "36px 32px" }}>
                   <div style={{
                     display: "inline-flex", alignItems: "center", gap: 8,
                     padding: "4px 12px", borderRadius: 6,
@@ -409,7 +450,7 @@ function ServicesSection() {
                   )}
                 </div>
                 <div style={{
-                  padding: "36px 28px",
+                  padding: isMobile ? "20px" : "36px 28px",
                   background: s.colorLight,
                   display: "flex", flexDirection: "column", justifyContent: "center",
                 }}>
@@ -505,6 +546,8 @@ function TeamSection() {
                     <img
                       src={m.img}
                       alt={m.name}
+                      width={56}
+                      height={56}
                       style={{
                         width: 56, height: 56, borderRadius: 14,
                         objectFit: "cover",
@@ -579,15 +622,15 @@ function ApproachSection() {
           }}>
             일반 AI 챗봇은 없는 정보도 그럴듯하게 만들어냅니다.
             의료 정보에서 이것은 치명적입니다.
-            온패밀리런은 SSOT 기반 하이브리드 RAG 아키텍처로
+            온패밀리런은 단일 진실 소스(SSOT) 기반 하이브리드 RAG 아키텍처로
             AI가 검증되지 않은 의료 정보를 생성하는 것을 원천 차단합니다.
           </p>
         </FadeIn>
         <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
           {[
             { step: "01", title: "의료 절대 규칙 하드코딩", desc: "약물 금기, 용량 한계, 응급 판단 등은 AI 추론을 거치지 않고 시스템 최상위에서 강제 적용됩니다." },
-            { step: "02", title: "SSOT 벡터 검색", desc: "전문의가 검증한 의료 정보만 벡터 DB에 저장. 질문과 관련된 근거만 정확히 추출합니다." },
-            { step: "03", title: "Fallback 안전장치", desc: "SSOT에서 충분한 근거를 찾지 못하면, AI가 답을 만들지 않고 '전문의 상담'을 안내합니다." },
+            { step: "02", title: "검증된 정보만 벡터 검색", desc: "전문의가 검증한 의료 정보만 벡터 DB에 저장. 질문과 관련된 근거만 정확히 추출합니다." },
+            { step: "03", title: "Fallback 안전장치", desc: "검증된 정보 원천에서 충분한 근거를 찾지 못하면, AI가 답을 만들지 않고 '전문의 상담'을 안내합니다." },
             { step: "04", title: "용량 계산 분리", desc: "약물 용량은 LLM이 계산하지 않습니다. 별도 계산기 함수가 체중 기반으로 정확히 산출합니다." },
           ].map((s, i) => (
             <FadeIn key={i} delay={0.08 * i}>
