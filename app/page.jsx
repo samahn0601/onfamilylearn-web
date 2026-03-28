@@ -41,7 +41,7 @@ const TEAM = [
     badge: "가정의학과 전문의",
     color: COLORS.coral,
     colorLight: COLORS.coralLight,
-    desc: "모바일닥터 CMO(최고의료책임자). '열나요' 앱 개발자. 200만+ 부모가 사용하는 소아 열관리 서비스를 만든 경험을 바탕으로, AI 기반 부모 교육 플랫폼을 창업합니다.",
+    desc: "모바일닥터 CMO(최고의료책임자). '열나요' 앱 개발자. 300만+ 아이의 부모가 사용하는 소아 열관리 서비스를 만든 경험을 바탕으로, AI 기반 부모 교육 플랫폼을 창업합니다.",
     isHuman: true,
     img: "/team/sam.png",
   },
@@ -105,18 +105,28 @@ const TEAM = [
     desc: "예산과 사업비 관리. 숫자 앞에서 타협하지 않습니다.",
     img: "/team/minji.png",
   },
+  {
+    name: "Founding CTO",
+    nameEn: "",
+    role: "CTO",
+    badge: "채용 중",
+    color: COLORS.sage,
+    colorLight: COLORS.sageLight,
+    desc: "아이의 건강 앞에서 '대충'이 없는 엔지니어를 기다립니다. 의료 AI의 정확성과 안전성을 함께 만들어갈 동료를 찾습니다.",
+    isVacant: true,
+  },
 ];
 
 const SERVICES = [
   {
     name: "열나요",
     tagline: "오늘 밤, 아이의 열을 해결합니다",
-    desc: "2017년 출시 이후 200만 이상의 부모가 선택한 소아 발열 관리 앱. 체중 기반 해열제 용량 계산, 교차 복용 경고, 열 패턴 추적까지. 6,000만 건의 체온 데이터와 2,000만 건의 해열제 복용 데이터가 축적된 국내 최대 소아 열관리 플랫폼입니다.",
+    desc: "2017년 출시 이후 300만 이상의 부모가 선택한 소아 발열 관리 앱. 체중 기반 해열제 용량 계산, 교차 복용 경고, 열 패턴 추적까지. 6,000만 건의 체온 데이터와 2,000만 건의 해열제 복용 데이터가 축적된 국내 최대 소아 열관리 플랫폼입니다.",
     features: ["체중 기반 해열제 용량 자동 계산", "교차 복용 경고 및 하루 허용량 관리", "열 패턴 추적 및 재진료 알림", "독감 스크리닝 AI 모델 (빅데이터 기반)"],
     color: COLORS.coral,
     colorLight: COLORS.coralLight,
     icon: "🌡️",
-    status: "2017~ · 200만+ 다운로드 · 서비스 운영 중",
+    status: "2017~ · 300만+ 다운로드 · 서비스 운영 중",
     note: "모바일닥터에서 운영 중인 서비스입니다. 온패밀리런과 시너지 파트너십을 구축합니다.",
   },
   {
@@ -177,8 +187,9 @@ function Nav({ active }) {
       fontFamily: FONTS.body,
     }}>
       <a href="#hero" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 8 }}>
-        <span style={{ fontSize: 20 }}>🏥</span>
+        <img src="/logo2.jpg" alt="Onfamily Learn" style={{ width: 32, height: 32, borderRadius: 6, objectFit: "contain" }} />
         <span style={{ fontFamily: FONTS.display, fontWeight: 700, fontSize: 17, color: COLORS.navy, letterSpacing: -0.5 }}>온패밀리런</span>
+        <span style={{ fontFamily: FONTS.body, fontWeight: 500, fontSize: 13, color: COLORS.warmGray, letterSpacing: -0.2 }}>Onfamily Learn</span>
       </a>
       <div style={{ display: "flex", gap: 4 }}>
         {NAV_ITEMS.map(n => (
@@ -220,10 +231,19 @@ function HeroSection() {
           fontSize: 13, fontFamily: FONTS.body, fontWeight: 500, color: COLORS.gold,
           marginBottom: 28,
         }}>
-          MoDoc AI · 의사가 만드는 AI 헬스케어
+          온패밀리런 · 의사가 만드는 부모 교육 플랫폼
         </div>
       </FadeIn>
       <FadeIn delay={0.1}>
+        <p style={{
+          fontFamily: FONTS.body, fontSize: 14, lineHeight: 1.7,
+          color: COLORS.warmGray, maxWidth: 600, margin: "0 0 20px",
+        }}>
+          1980년 처음 보고된 '열 공포(Fever Phobia)' —<br/>
+          아이가 열나면 불안해지는 부모의 문제는 아직도 해결되지 않았습니다.
+        </p>
+      </FadeIn>
+      <FadeIn delay={0.15}>
         <h1 style={{
           fontFamily: FONTS.display, fontSize: "clamp(32px, 5vw, 56px)",
           fontWeight: 700, color: COLORS.navy, lineHeight: 1.25,
@@ -233,16 +253,16 @@ function HeroSection() {
           45년간 해결되지 않은<br/>문제를, 의사가 직접,<br/>AI와 함께 풉니다
         </h1>
       </FadeIn>
-      <FadeIn delay={0.2}>
+      <FadeIn delay={0.25}>
         <p style={{
           fontFamily: FONTS.body, fontSize: 17, lineHeight: 1.7,
           color: COLORS.warmGray, maxWidth: 540, margin: "0 0 40px",
         }}>
-          200만 부모가 선택한 '열나요' 앱을 만든 가정의학과 전문의가<br/>
+          300만+ 아이의 부모가 선택한 '열나요' 앱을 만든 가정의학과 전문의가<br/>
           AI 에이전트 팀과 함께 부모 교육의 새로운 기준을 세웁니다.
         </p>
       </FadeIn>
-      <FadeIn delay={0.3}>
+      <FadeIn delay={0.35}>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
           <a href="#services" style={{
             padding: "14px 32px", borderRadius: 10,
@@ -441,7 +461,7 @@ function TeamSection() {
             fontWeight: 700, color: COLORS.navy, lineHeight: 1.35,
             letterSpacing: -1, marginBottom: 12,
           }}>
-            전문의 1명 + AI 에이전트 6명
+            전문의 1명 + AI 에이전트 6명 + Founding CTO
           </h2>
         </FadeIn>
         <FadeIn delay={0.15}>
@@ -460,43 +480,60 @@ function TeamSection() {
           {TEAM.map((m, i) => (
             <FadeIn key={i} delay={0.05 * i}>
               <div
-                onClick={() => setSelected(selected === i ? null : i)}
+                onClick={() => m.isVacant ? window.location.href = "mailto:sanghyun@fevercoach.net" : setSelected(selected === i ? null : i)}
                 style={{
                   padding: 24, borderRadius: 14,
-                  background: selected === i ? m.colorLight : COLORS.cream,
-                  border: `1.5px solid ${selected === i ? m.color + "44" : COLORS.border}`,
+                  background: m.isVacant ? "transparent" : (selected === i ? m.colorLight : COLORS.cream),
+                  border: m.isVacant
+                    ? `2px dashed ${COLORS.sage}88`
+                    : `1.5px solid ${selected === i ? m.color + "44" : COLORS.border}`,
                   cursor: "pointer",
                   transition: "all 0.25s ease",
                   transform: selected === i ? "translateY(-2px)" : "none",
-                  boxShadow: selected === i ? `0 8px 24px ${m.color}15` : "none",
+                  boxShadow: selected === i && !m.isVacant ? `0 8px 24px ${m.color}15` : "none",
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
-                  <img
-                    src={m.img}
-                    alt={m.name}
-                    style={{
+                  {m.isVacant ? (
+                    <div style={{
                       width: 56, height: 56, borderRadius: 14,
-                      objectFit: "cover",
-                      border: `2px solid ${m.color}22`,
-                    }}
-                  />
+                      border: `2px dashed ${COLORS.sage}66`,
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      fontSize: 24, color: COLORS.sage,
+                    }}>?</div>
+                  ) : (
+                    <img
+                      src={m.img}
+                      alt={m.name}
+                      style={{
+                        width: 56, height: 56, borderRadius: 14,
+                        objectFit: "cover",
+                        border: `2px solid ${m.color}22`,
+                      }}
+                    />
+                  )}
                   <div>
                     <p style={{
                       fontFamily: FONTS.body, fontWeight: 700, fontSize: 15,
                       color: COLORS.navy, marginBottom: 2,
                     }}>{m.name}</p>
-                    <p style={{
-                      fontFamily: FONTS.body, fontSize: 12, color: COLORS.warmGray,
-                    }}>{m.nameEn} · {m.role}</p>
+                    {m.nameEn ? (
+                      <p style={{
+                        fontFamily: FONTS.body, fontSize: 12, color: COLORS.warmGray,
+                      }}>{m.nameEn} · {m.role}</p>
+                    ) : (
+                      <p style={{
+                        fontFamily: FONTS.body, fontSize: 12, color: COLORS.warmGray,
+                      }}>{m.role}</p>
+                    )}
                   </div>
                 </div>
                 <div style={{
                   display: "inline-block", padding: "3px 10px", borderRadius: 5,
-                  background: m.isHuman ? m.color : m.color + "18",
+                  background: m.isVacant ? COLORS.coral : (m.isHuman ? m.color : m.color + "18"),
                   fontSize: 11, fontWeight: 600,
                   fontFamily: FONTS.body,
-                  color: m.isHuman ? "#fff" : m.color,
+                  color: m.isVacant ? "#fff" : (m.isHuman ? "#fff" : m.color),
                   marginBottom: 12,
                 }}>{m.badge}</div>
                 <p style={{
@@ -602,17 +639,17 @@ function ContactSection() {
             color: COLORS.warmGray, marginBottom: 32,
           }}>
             Founding CTO를 채용 중입니다.<br/>
-            의료 AI의 정확성과 안전성에 진심인 엔지니어를 기다립니다.
+            아이의 건강 앞에서 '대충'이 없는 엔지니어를 기다립니다.
           </p>
         </FadeIn>
         <FadeIn delay={0.15}>
-          <a href="mailto:sam.ahn@modoc-ai.com" style={{
+          <a href="mailto:sanghyun@fevercoach.net" style={{
             display: "inline-block", padding: "14px 36px", borderRadius: 10,
             background: COLORS.sage, color: "#fff",
             fontFamily: FONTS.body, fontSize: 15, fontWeight: 600,
             textDecoration: "none",
             boxShadow: `0 4px 16px ${COLORS.sage}33`,
-          }}>sam.ahn@modoc-ai.com</a>
+          }}>sanghyun@fevercoach.net</a>
         </FadeIn>
       </div>
       <div style={{
@@ -622,7 +659,7 @@ function ContactSection() {
         flexWrap: "wrap", gap: 12,
         fontFamily: FONTS.body, fontSize: 12, color: COLORS.warmGray,
       }}>
-        <span>© 2026 MoDoc AI (온패밀리런). All rights reserved.</span>
+        <span>© 2026 Onfamily Learn. All rights reserved.</span>
         <span>열나요 서비스는 (주)모바일닥터에서 운영합니다.</span>
       </div>
     </section>
