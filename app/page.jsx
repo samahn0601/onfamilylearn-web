@@ -662,6 +662,345 @@ function ApproachSection() {
   );
 }
 
+function LearningLoopSection() {
+  const isMobile = useIsMobile();
+  const steps = [
+    {
+      phase: "Before",
+      icon: "📚",
+      title: "평소에 배웁니다",
+      service: "OnFamily Learn",
+      desc: "마이크로러닝으로 발열 대처법, 해열제 원칙, 위험 신호를 미리 학습합니다.",
+      color: COLORS.sage,
+      colorLight: COLORS.sageLight,
+    },
+    {
+      phase: "During",
+      icon: "🌡️",
+      title: "그 순간, 대응합니다",
+      service: "열나요",
+      desc: "한밤중 아이가 열나면, 체중 기반 용량 계산과 교차 복용 경고로 즉시 대응합니다.",
+      color: COLORS.coral,
+      colorLight: COLORS.coralLight,
+    },
+    {
+      phase: "After",
+      icon: "🔄",
+      title: "경험을 학습으로 바꿉니다",
+      service: "OnFamily Learn",
+      desc: "실제 경험을 복기하고, 다음에 더 잘 대처할 수 있도록 맞춤 복습합니다.",
+      color: COLORS.sage,
+      colorLight: COLORS.sageLight,
+    },
+  ];
+  return (
+    <section style={{
+      padding: isMobile ? "60px clamp(16px, 5vw, 80px)" : "100px clamp(20px, 5vw, 80px)",
+      background: COLORS.warmWhite,
+    }}>
+      <div style={{ maxWidth: 900, margin: "0 auto" }}>
+        <FadeIn>
+          <p style={{
+            fontFamily: FONTS.body, fontSize: 12, fontWeight: 600,
+            textTransform: "uppercase", letterSpacing: 2,
+            color: COLORS.sage, marginBottom: 16,
+          }}>Learning Loop</p>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <h2 style={{
+            fontFamily: FONTS.display, fontSize: "clamp(26px, 3.5vw, 40px)",
+            fontWeight: 700, color: COLORS.navy, lineHeight: 1.35,
+            letterSpacing: -1, marginBottom: 12,
+          }}>
+            열나요가 오늘 밤을 해결한다면,<br/>OnFamily Learn은 다음 10년의 부모 역량을 만듭니다
+          </h2>
+        </FadeIn>
+        <FadeIn delay={0.15}>
+          <p style={{
+            fontFamily: FONTS.body, fontSize: 16, lineHeight: 1.7,
+            color: COLORS.warmGray, marginBottom: 48, maxWidth: 600,
+          }}>
+            한 번의 정보 제공이 아닌, 배우고 → 대응하고 → 복기하는 순환 학습으로
+            부모의 건강 대처 역량을 근본적으로 키웁니다.
+          </p>
+        </FadeIn>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr",
+          gap: 16, position: "relative",
+        }}>
+          {steps.map((s, i) => (
+            <FadeIn key={i} delay={0.1 * i}>
+              <div style={{
+                padding: 24, borderRadius: 14,
+                background: s.colorLight,
+                border: `1.5px solid ${s.color}22`,
+                position: "relative",
+              }}>
+                <div style={{
+                  display: "inline-flex", alignItems: "center", gap: 6,
+                  padding: "3px 10px", borderRadius: 5,
+                  background: s.color, color: "#fff",
+                  fontSize: 11, fontWeight: 600, fontFamily: FONTS.body,
+                  marginBottom: 14,
+                }}>{s.phase}</div>
+                <div style={{ fontSize: 28, marginBottom: 10 }}>{s.icon}</div>
+                <p style={{
+                  fontFamily: FONTS.body, fontWeight: 700, fontSize: 16,
+                  color: COLORS.navy, marginBottom: 4,
+                }}>{s.title}</p>
+                <p style={{
+                  fontFamily: FONTS.body, fontSize: 12, fontWeight: 600,
+                  color: s.color, marginBottom: 10,
+                }}>{s.service}</p>
+                <p style={{
+                  fontFamily: FONTS.body, fontSize: 13, lineHeight: 1.6,
+                  color: COLORS.warmGray,
+                }}>{s.desc}</p>
+                {i < steps.length - 1 && !isMobile && (
+                  <div style={{
+                    position: "absolute", right: -13, top: "50%", transform: "translateY(-50%)",
+                    fontSize: 18, color: COLORS.warmGray, zIndex: 1,
+                  }}>→</div>
+                )}
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+        {!isMobile && (
+          <FadeIn delay={0.35}>
+            <div style={{
+              textAlign: "center", marginTop: 16,
+              fontFamily: FONTS.body, fontSize: 13, color: COLORS.warmGray,
+            }}>
+              ↻ 이 순환이 반복될수록, 부모의 자신감과 대처 능력이 높아집니다
+            </div>
+          </FadeIn>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function EdgeCaseSection() {
+  const isMobile = useIsMobile();
+  return (
+    <section style={{
+      padding: isMobile ? "60px clamp(16px, 5vw, 80px)" : "100px clamp(20px, 5vw, 80px)",
+      background: COLORS.cream,
+    }}>
+      <div style={{ maxWidth: 800, margin: "0 auto" }}>
+        <FadeIn>
+          <p style={{
+            fontFamily: FONTS.body, fontSize: 12, fontWeight: 600,
+            textTransform: "uppercase", letterSpacing: 2,
+            color: COLORS.coral, marginBottom: 16,
+          }}>Why It Matters</p>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <h2 style={{
+            fontFamily: FONTS.display, fontSize: "clamp(26px, 3.5vw, 40px)",
+            fontWeight: 700, color: COLORS.navy, lineHeight: 1.35,
+            letterSpacing: -1, marginBottom: 12,
+          }}>
+            의료 정보에서 '대충'은<br/>아이의 안전을 위협합니다
+          </h2>
+        </FadeIn>
+        <FadeIn delay={0.15}>
+          <p style={{
+            fontFamily: FONTS.body, fontSize: 16, lineHeight: 1.7,
+            color: COLORS.warmGray, marginBottom: 40, maxWidth: 600,
+          }}>
+            같은 질문이라도, 검증되지 않은 AI와 전문의가 검증한 시스템의 답은 다릅니다.
+          </p>
+        </FadeIn>
+        <FadeIn delay={0.2}>
+          <div style={{
+            borderRadius: 16, overflow: "hidden",
+            border: `1px solid ${COLORS.border}`,
+          }}>
+            <div style={{
+              padding: isMobile ? "16px 20px" : "16px 32px",
+              background: COLORS.navy,
+            }}>
+              <p style={{
+                fontFamily: FONTS.body, fontSize: 14, fontWeight: 600,
+                color: "#fff",
+              }}>
+                💬 "12kg 아이에게 이브듀오 시럽 얼마나 먹여야 하나요?"
+              </p>
+            </div>
+            <div style={{
+              display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+            }}>
+              <div style={{
+                padding: isMobile ? "20px" : "28px 32px",
+                background: "#FEF2F2",
+                borderRight: isMobile ? "none" : `1px solid ${COLORS.border}`,
+                borderBottom: isMobile ? `1px solid ${COLORS.border}` : "none",
+              }}>
+                <div style={{
+                  display: "inline-flex", alignItems: "center", gap: 6,
+                  padding: "3px 10px", borderRadius: 5,
+                  background: "#DC2626", color: "#fff",
+                  fontSize: 11, fontWeight: 600, fontFamily: FONTS.body,
+                  marginBottom: 14,
+                }}>일반 AI 챗봇</div>
+                <p style={{
+                  fontFamily: FONTS.body, fontSize: 15, fontWeight: 600,
+                  color: "#991B1B", marginBottom: 8,
+                }}>"8mL를 투여하세요"</p>
+                <p style={{
+                  fontFamily: FONTS.body, fontSize: 13, lineHeight: 1.6,
+                  color: "#7F1D1D",
+                }}>
+                  일반 이부프로펜 농도(20mg/mL) 기준으로 계산.
+                  하지만 이브듀오는 <strong>2배 농도(40mg/mL)</strong>입니다.
+                  8mL는 과량 투여 — 아이에게 위험합니다.
+                </p>
+                <div style={{
+                  marginTop: 12, padding: "6px 10px", borderRadius: 6,
+                  background: "#DC262618", fontSize: 12, fontFamily: FONTS.body,
+                  color: "#991B1B", fontWeight: 600,
+                }}>⚠️ 2배 과량 투여 위험</div>
+              </div>
+              <div style={{
+                padding: isMobile ? "20px" : "28px 32px",
+                background: COLORS.sageLight,
+              }}>
+                <div style={{
+                  display: "inline-flex", alignItems: "center", gap: 6,
+                  padding: "3px 10px", borderRadius: 5,
+                  background: COLORS.sage, color: "#fff",
+                  fontSize: 11, fontWeight: 600, fontFamily: FONTS.body,
+                  marginBottom: 14,
+                }}>OnFamily Learn</div>
+                <p style={{
+                  fontFamily: FONTS.body, fontSize: 15, fontWeight: 600,
+                  color: "#1B3A17", marginBottom: 8,
+                }}>"4mL를 투여하세요"</p>
+                <p style={{
+                  fontFamily: FONTS.body, fontSize: 13, lineHeight: 1.6,
+                  color: "#2D5428",
+                }}>
+                  이브듀오는 일반 이부프로펜의 2배 농도(40mg/mL)입니다.
+                  전문의가 검증한 한국 제품별 농도 데이터로 <strong>정확한 4mL</strong>를 안내합니다.
+                </p>
+                <div style={{
+                  marginTop: 12, padding: "6px 10px", borderRadius: 6,
+                  background: COLORS.sage + "18", fontSize: 12, fontFamily: FONTS.body,
+                  color: "#1B3A17", fontWeight: 600,
+                }}>✅ 전문의 검증 정확 용량</div>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+        <FadeIn delay={0.3}>
+          <p style={{
+            fontFamily: FONTS.body, fontSize: 13, lineHeight: 1.6,
+            color: COLORS.warmGray, marginTop: 20, textAlign: "center",
+            fontStyle: "italic",
+          }}>
+            이것이 전문의가 직접 검증한 의료 정보 시스템이 필요한 이유입니다.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
+function RoadmapSection() {
+  const isMobile = useIsMobile();
+  const phases = [
+    { label: "발열", icon: "🌡️", status: "now", desc: "현재 집중" },
+    { label: "감기 · 기침", icon: "🤧", status: "next", desc: "" },
+    { label: "구토 · 설사", icon: "💊", status: "next", desc: "" },
+    { label: "해열제 · 항생제", icon: "💉", status: "future", desc: "" },
+    { label: "예방접종", icon: "🛡️", status: "future", desc: "" },
+    { label: "성장 · 영양", icon: "🌱", status: "future", desc: "" },
+  ];
+  return (
+    <section style={{
+      padding: isMobile ? "60px clamp(16px, 5vw, 80px)" : "80px clamp(20px, 5vw, 80px)",
+      background: COLORS.warmWhite,
+    }}>
+      <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
+        <FadeIn>
+          <p style={{
+            fontFamily: FONTS.body, fontSize: 12, fontWeight: 600,
+            textTransform: "uppercase", letterSpacing: 2,
+            color: COLORS.sage, marginBottom: 16,
+          }}>Roadmap</p>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <h2 style={{
+            fontFamily: FONTS.display, fontSize: "clamp(24px, 3vw, 34px)",
+            fontWeight: 700, color: COLORS.navy, lineHeight: 1.35,
+            letterSpacing: -0.8, marginBottom: 12,
+          }}>
+            발열에서 시작합니다
+          </h2>
+        </FadeIn>
+        <FadeIn delay={0.15}>
+          <p style={{
+            fontFamily: FONTS.body, fontSize: 15, lineHeight: 1.7,
+            color: COLORS.warmGray, marginBottom: 40,
+          }}>
+            가장 긴급하고 빈번한 '발열'부터 시작해, 소아 건강 전 영역으로 확장합니다.
+          </p>
+        </FadeIn>
+        <FadeIn delay={0.2}>
+          <div style={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: isMobile ? 8 : 4,
+          }}>
+            {phases.map((p, i) => (
+              <div key={i} style={{
+                display: "flex", alignItems: isMobile ? "flex-start" : "center",
+                flexDirection: isMobile ? "row" : "column",
+                gap: isMobile ? 12 : 6,
+              }}>
+                <div style={{
+                  display: "flex", flexDirection: "column", alignItems: "center",
+                }}>
+                  <div style={{
+                    width: isMobile ? 44 : 52, height: isMobile ? 44 : 52,
+                    borderRadius: 14, display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: isMobile ? 20 : 24,
+                    background: p.status === "now" ? COLORS.coral : p.status === "next" ? COLORS.sageLight : COLORS.lightGray,
+                    border: p.status === "now" ? `2px solid ${COLORS.coral}` : `1.5px solid ${COLORS.border}`,
+                    boxShadow: p.status === "now" ? `0 4px 12px ${COLORS.coral}33` : "none",
+                  }}>{p.icon}</div>
+                </div>
+                <div style={{ textAlign: isMobile ? "left" : "center" }}>
+                  <p style={{
+                    fontFamily: FONTS.body, fontWeight: 600,
+                    fontSize: 13, color: p.status === "now" ? COLORS.coral : COLORS.navy,
+                  }}>{p.label}</p>
+                  {p.desc && (
+                    <p style={{
+                      fontFamily: FONTS.body, fontSize: 11, color: COLORS.coral, fontWeight: 600,
+                    }}>{p.desc}</p>
+                  )}
+                </div>
+                {i < phases.length - 1 && !isMobile && (
+                  <span style={{
+                    fontSize: 14, color: COLORS.border, margin: "0 2px",
+                    alignSelf: "center",
+                  }}>→</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
 function ContactSection() {
   return (
     <section id="contact" style={{
@@ -734,8 +1073,11 @@ export default function OnFamilyLearnHome() {
       <HeroSection />
       <MissionSection />
       <ServicesSection />
+      <LearningLoopSection />
+      <EdgeCaseSection />
       <TeamSection />
       <ApproachSection />
+      <RoadmapSection />
       <ContactSection />
     </div>
   );
