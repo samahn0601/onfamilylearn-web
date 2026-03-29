@@ -82,7 +82,7 @@ const TEAM = [
     badge: "AI Agent",
     color: "#185FA5",
     colorLight: "#E6F1FB",
-    desc: "의료 콘텐츠 검증과 SSOT 관리. 정확성에 타협하지 않습니다.",
+    desc: "의료 콘텐츠 검증과 단일 진실 소스 관리. 정확성에 타협하지 않습니다.",
     img: "/team/seoyun.png",
   },
   {
@@ -143,10 +143,10 @@ const SERVICES = [
 ];
 
 const RULES = [
-  { icon: "🛡️", title: "단일 진실 소스(SSOT)", desc: "모든 의료 정보는 전문의가 검증한 단 하나의 정보 원천에서만 제공됩니다" },
-  { icon: "🚫", title: "AI 환각 차단", desc: "검증된 정보 원천에 없는 의료 정보는 AI가 절대 스스로 생성하지 못합니다" },
-  { icon: "⚕️", title: "전문의 최종 승인", desc: "약물 용량, 금기, 응급 판단은 반드시 전문의 검증을 거칩니다" },
-  { icon: "🔒", title: "의료 절대 규칙", desc: "4대 핵심 안전 규칙이 시스템 최상위에 하드코딩되어 있습니다" },
+  { icon: "💊", title: "투약 안전망", desc: "연령·체중별 정확한 용량 계산, 금기 약물 필터링, 교차 투여 차단, 고농도 제형(이브듀오 등) 과량 방지" },
+  { icon: "🚨", title: "응급 신호 감지", desc: "콜라색 소변, 의식 저하, 호흡 이상 등 위험 징후를 놓치지 않고 즉시 응급실 방문을 안내합니다" },
+  { icon: "🏥", title: "병원 타이밍 가이드", desc: "집에서 지켜봐도 되는 상황과 진료가 필요한 상황을 명확한 기준으로 구분해 드립니다" },
+  { icon: "🛡️", title: "잘못된 정보 차단", desc: "AI 환각, 미신, 불필요한 미온수 마사지, 잘못된 경련 대처 등 — 검증되지 않은 정보는 원천 차단합니다" },
 ];
 
 function useInView(threshold = 0.15) {
@@ -359,11 +359,23 @@ function MissionSection() {
         <FadeIn delay={0.2}>
           <p style={{
             fontFamily: FONTS.body, fontSize: 16, lineHeight: 1.8,
-            color: COLORS.warmGray, marginBottom: 40,
+            color: COLORS.warmGray, marginBottom: 16,
           }}>
-            온패밀리런은 가정의학과 전문의가 직접 검증한 의료 정보만을 기반으로,
+            온패밀리런은 소아 진료 10년, 만 건 이상의 부모 상담 경험을 가진
+            가정의학과 전문의이자 딸 아이의 아빠가,
+            직접 검증한 의료 정보만을 기반으로
             부모가 아이의 건강 문제를 이해하고 올바르게 대처할 수 있도록 돕습니다.
             '열나요' 앱으로 10년간 쌓은 실전 경험과 데이터를 교육으로 확장합니다.
+          </p>
+        </FadeIn>
+        <FadeIn delay={0.25}>
+          <p style={{
+            fontFamily: FONTS.body, fontSize: 15, lineHeight: 1.8,
+            color: COLORS.sage, fontWeight: 500,
+            marginBottom: 40, fontStyle: "italic",
+          }}>
+            잘못된 건강 정보의 홍수 속에서, 부모가 불안과 걱정을 줄이고
+            아이를 더 잘 키울 수 있도록 — 온패밀리런이 책임감 있게 돕겠습니다.
           </p>
         </FadeIn>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
@@ -622,7 +634,7 @@ function ApproachSection() {
           }}>
             일반 AI 챗봇은 없는 정보도 그럴듯하게 만들어냅니다.
             의료 정보에서 이것은 치명적입니다.
-            온패밀리런은 단일 진실 소스(SSOT) 기반 하이브리드 RAG 아키텍처로
+            온패밀리런은 단일 진실 소스(Single Source of Truth, SSOT) 기반 하이브리드 RAG 아키텍처로
             AI가 검증되지 않은 의료 정보를 생성하는 것을 원천 차단합니다.
           </p>
         </FadeIn>
