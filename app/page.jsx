@@ -1014,47 +1014,173 @@ function RoadmapSection() {
 }
 
 function ContactSection() {
+  const isMobile = useIsMobile();
+  const techTags = ["React Native", "Next.js", "FastAPI", "Supabase", "LLM"];
+  const ctoPoints = [
+    "SSOT 기반 RAG + 의료 안전 아키텍처 설계",
+    "React Native 앱 + Next.js 어드민 개발 리드",
+    "LLM API 연동 및 벡터 검색 파이프라인 구축",
+    "6~8주 검증 후 공동창업 전환",
+  ];
   return (
     <section id="contact" style={{
-      padding: "80px clamp(20px, 5vw, 80px) 48px",
+      padding: isMobile ? "60px clamp(16px, 5vw, 80px) 48px" : "80px clamp(20px, 5vw, 80px) 48px",
       background: COLORS.cream,
-      textAlign: "center",
     }}>
-      <div style={{ maxWidth: 600, margin: "0 auto" }}>
+      <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <FadeIn>
-          <h2 style={{
-            fontFamily: FONTS.display, fontSize: 28, fontWeight: 700,
-            color: COLORS.navy, marginBottom: 16, letterSpacing: -0.5,
-          }}>함께 만들어갈 동료를 찾습니다</h2>
+          <div style={{ textAlign: "center", marginBottom: 32 }}>
+            <p style={{
+              fontFamily: FONTS.body, fontSize: 12, fontWeight: 600,
+              textTransform: "uppercase", letterSpacing: 2,
+              color: COLORS.sage, marginBottom: 16,
+            }}>Join Us</p>
+            <h2 style={{
+              fontFamily: FONTS.display, fontSize: "clamp(26px, 3.5vw, 36px)",
+              fontWeight: 700, color: COLORS.navy, lineHeight: 1.35,
+              letterSpacing: -0.8,
+            }}>함께 만들어갈 동료와 파트너를 찾습니다</h2>
+          </div>
         </FadeIn>
-        <FadeIn delay={0.1}>
-          <p style={{
-            fontFamily: FONTS.body, fontSize: 15, lineHeight: 1.7,
-            color: COLORS.warmGray, marginBottom: 32,
-          }}>
-            Founding CTO를 채용 중입니다.<br/>
-            아이의 건강 앞에서 '대충'이 없는 엔지니어를 기다립니다.
-          </p>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+          gap: 20,
+        }}>
+          {/* CTO Card */}
+          <FadeIn delay={0.1}>
+            <div style={{
+              padding: isMobile ? "24px 20px" : "28px 24px",
+              borderRadius: 14,
+              background: COLORS.cream,
+              border: `1px solid ${COLORS.border}`,
+              display: "flex", flexDirection: "column", height: "100%",
+            }}>
+              <div style={{
+                display: "inline-block", padding: "3px 10px", borderRadius: 5,
+                background: COLORS.sage + "18", color: COLORS.sage,
+                fontSize: 11, fontWeight: 600, fontFamily: FONTS.body,
+                marginBottom: 16, alignSelf: "flex-start",
+              }}>Founding CTO</div>
+              <h3 style={{
+                fontFamily: FONTS.display, fontSize: 18, fontWeight: 700,
+                color: COLORS.navy, lineHeight: 1.4, marginBottom: 10,
+              }}>아이의 건강 앞에서<br/>'대충'이 없는 엔지니어</h3>
+              <p style={{
+                fontFamily: FONTS.body, fontSize: 13, lineHeight: 1.7,
+                color: COLORS.warmGray, marginBottom: 14,
+              }}>
+                전문의가 만든 콘텐츠를, 300만 부모에게 도달하는 제품으로 바꿔줄 기술 공동창업자를 찾습니다.
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 16 }}>
+                {ctoPoints.map((pt, i) => (
+                  <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                    <div style={{
+                      width: 5, height: 5, borderRadius: "50%",
+                      background: COLORS.sage, flexShrink: 0, marginTop: 7,
+                    }}/>
+                    <span style={{
+                      fontFamily: FONTS.body, fontSize: 13, lineHeight: 1.5,
+                      color: COLORS.warmGray,
+                    }}>{pt}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: "auto" }}>
+                {techTags.map((t, i) => (
+                  <span key={i} style={{
+                    display: "inline-block", padding: "3px 8px", borderRadius: 4,
+                    background: COLORS.sageLight, color: COLORS.sage,
+                    fontSize: 11, fontFamily: FONTS.body, fontWeight: 500,
+                  }}>{t}</span>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+          {/* Investor Card */}
+          <FadeIn delay={0.15}>
+            <div style={{
+              padding: isMobile ? "24px 20px" : "28px 24px",
+              borderRadius: 14,
+              background: COLORS.warmWhite,
+              border: `1px solid ${COLORS.border}`,
+              display: "flex", flexDirection: "column", height: "100%",
+            }}>
+              <div style={{
+                display: "inline-block", padding: "3px 10px", borderRadius: 5,
+                background: COLORS.goldLight, color: COLORS.gold,
+                fontSize: 11, fontWeight: 600, fontFamily: FONTS.body,
+                marginBottom: 16, alignSelf: "flex-start",
+              }}>For Investors</div>
+              <h3 style={{
+                fontFamily: FONTS.display, fontSize: 18, fontWeight: 700,
+                color: COLORS.navy, lineHeight: 1.4, marginBottom: 10,
+              }}>300만 부모가 매일 밤 기록한<br/>데이터가, 이제 교육이 됩니다</h3>
+              <p style={{
+                fontFamily: FONTS.body, fontSize: 13, lineHeight: 1.7,
+                color: COLORS.warmGray, marginBottom: 16,
+              }}>
+                2017년부터 부모들은 열나요 앱에 아이의 체온을 기록하고, 해열제를 계산하고, 증상을 남겼습니다.
+                그렇게 쌓인 한국 소아 건강의 가장 방대한 실사용 데이터셋을, 교육 플랫폼으로 확장합니다.
+              </p>
+              <div style={{
+                display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
+                gap: 8, marginBottom: 16,
+              }}>
+                {[
+                  { num: "300만+", label: "누적 다운로드" },
+                  { num: "25만", label: "월간 활성 사용자" },
+                  { num: "1억+", label: "건강 데이터" },
+                ].map((s, i) => (
+                  <div key={i} style={{
+                    background: COLORS.lightGray, borderRadius: 8,
+                    padding: "12px 8px", textAlign: "center",
+                  }}>
+                    <p style={{
+                      fontFamily: FONTS.body, fontSize: 20, fontWeight: 700,
+                      color: COLORS.navy, margin: 0,
+                    }}>{s.num}</p>
+                    <p style={{
+                      fontFamily: FONTS.body, fontSize: 10, color: COLORS.warmGray,
+                      margin: "3px 0 0", lineHeight: 1.3,
+                    }}>{s.label}</p>
+                  </div>
+                ))}
+              </div>
+              <p style={{
+                fontFamily: FONTS.body, fontSize: 11, lineHeight: 1.5,
+                color: COLORS.warmGray, fontStyle: "italic",
+                marginTop: "auto",
+              }}>
+                열나요는 (주)모바일닥터에서 운영 중인 서비스입니다.
+                온패밀리런은 모바일닥터와 시너지 파트너십을 통해 데이터와 인사이트를 활용합니다.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+        {/* Shared Email CTA */}
+        <FadeIn delay={0.2}>
+          <div style={{ textAlign: "center", marginTop: 32 }}>
+            <a href="mailto:sanghyun@fevercoach.net" style={{
+              display: "inline-block", padding: "14px 36px", borderRadius: 10,
+              background: COLORS.sage, color: "#fff",
+              fontFamily: FONTS.body, fontSize: 15, fontWeight: 600,
+              textDecoration: "none",
+              boxShadow: `0 4px 16px ${COLORS.sage}33`,
+            }}>sanghyun@fevercoach.net</a>
+          </div>
         </FadeIn>
-        <FadeIn delay={0.15}>
-          <a href="mailto:sanghyun@fevercoach.net" style={{
-            display: "inline-block", padding: "14px 36px", borderRadius: 10,
-            background: COLORS.sage, color: "#fff",
-            fontFamily: FONTS.body, fontSize: 15, fontWeight: 600,
-            textDecoration: "none",
-            boxShadow: `0 4px 16px ${COLORS.sage}33`,
-          }}>sanghyun@fevercoach.net</a>
-        </FadeIn>
-      </div>
-      <div style={{
-        marginTop: 64, paddingTop: 32,
-        borderTop: `1px solid ${COLORS.border}`,
-        display: "flex", justifyContent: "space-between", alignItems: "center",
-        flexWrap: "wrap", gap: 12,
-        fontFamily: FONTS.body, fontSize: 12, color: COLORS.warmGray,
-      }}>
-        <span>© 2026 Onfamily Learn. All rights reserved.</span>
-        <span>열나요 서비스는 (주)모바일닥터에서 운영합니다.</span>
+        {/* Footer */}
+        <div style={{
+          marginTop: 64, paddingTop: 32,
+          borderTop: `1px solid ${COLORS.border}`,
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+          flexWrap: "wrap", gap: 12,
+          fontFamily: FONTS.body, fontSize: 12, color: COLORS.warmGray,
+        }}>
+          <span>© 2026 Onfamily Learn. All rights reserved.</span>
+          <span>열나요 서비스는 (주)모바일닥터에서 운영합니다.</span>
+        </div>
       </div>
     </section>
   );
