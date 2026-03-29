@@ -923,14 +923,17 @@ function EdgeCaseSection() {
 
 function RoadmapSection() {
   const isMobile = useIsMobile();
-  const phases = [
-    { label: "발열", icon: "🌡️", status: "now", desc: "현재 집중" },
-    { label: "감기 · 기침", icon: "🤧", status: "next", desc: "" },
-    { label: "구토 · 설사", icon: "💊", status: "next", desc: "" },
-    { label: "해열제\n항생제", icon: "💉", status: "future", desc: "" },
-    { label: "예방접종", icon: "🛡️", status: "future", desc: "" },
-    { label: "성장 · 영양", icon: "🌱", status: "future", desc: "" },
+  const center = { label: "발열\n(해열제 포함)", icon: "🌡️" };
+  const surrounding = [
+    { label: "감기 · 기침", icon: "🤧" },
+    { label: "구토 · 설사", icon: "🤮" },
+    { label: "항생제 ·\n기타 약물", icon: "💊" },
+    { label: "예방접종", icon: "🛡️" },
+    { label: "성장 및 발달", icon: "🌱" },
+    { label: "응급 상황", icon: "🏥" },
   ];
+
+  const ringRadius = 150;
 
   if (isMobile) {
     return (
@@ -940,23 +943,32 @@ function RoadmapSection() {
             <p style={{ fontFamily: FONTS.body, fontSize: 12, fontWeight: 600, textTransform: "uppercase", letterSpacing: 2, color: COLORS.sage, marginBottom: 16 }}>Roadmap</p>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <h2 style={{ fontFamily: FONTS.display, fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 700, color: COLORS.navy, lineHeight: 1.35, letterSpacing: -0.8, marginBottom: 12 }}>발열에서 시작합니다</h2>
+            <h2 style={{ fontFamily: FONTS.display, fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 700, color: COLORS.navy, lineHeight: 1.35, letterSpacing: -0.8, marginBottom: 12 }}>발열에서 시작해, 모든 방향으로 확장합니다</h2>
           </FadeIn>
           <FadeIn delay={0.15}>
-            <p style={{ fontFamily: FONTS.body, fontSize: 15, lineHeight: 1.7, color: COLORS.warmGray, marginBottom: 32 }}>가장 긴급하고 빈번한 '발열'부터 시작해, 소아 건강 전 영역으로 확장합니다.</p>
+            <p style={{ fontFamily: FONTS.body, fontSize: 15, lineHeight: 1.7, color: COLORS.warmGray, marginBottom: 32 }}>가장 긴급한 '발열(해열제 포함)'에서 출발해, 부모의 요구와 상황에 따라 소아 건강 전 영역으로 넓혀갑니다.</p>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {phases.map((p, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <div style={{
-                    width: 40, height: 40, borderRadius: 12, flexShrink: 0,
-                    display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18,
-                    background: p.status === "now" ? COLORS.coral : p.status === "next" ? COLORS.sageLight : COLORS.lightGray,
-                    border: p.status === "now" ? `2px solid ${COLORS.coral}` : `1.5px solid ${COLORS.border}`,
-                  }}>{p.icon}</div>
-                  <p style={{ fontFamily: FONTS.body, fontWeight: 600, fontSize: 14, color: p.status === "now" ? COLORS.coral : COLORS.navy }}>
-                    {p.label.replace("\n", " · ")}{p.desc ? ` — ${p.desc}` : ""}
+            {/* Center item */}
+            <div style={{
+              width: 80, height: 80, borderRadius: "50%", margin: "0 auto 24px",
+              display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+              background: COLORS.coral, color: "#fff",
+              boxShadow: `0 6px 20px ${COLORS.coral}44`,
+            }}>
+              <span style={{ fontSize: 28 }}>{center.icon}</span>
+            </div>
+            <p style={{ fontFamily: FONTS.body, fontWeight: 700, fontSize: 15, color: COLORS.coral, marginBottom: 24 }}>발열 (해열제 포함)</p>
+            {/* 2x3 grid */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+              {surrounding.map((item, i) => (
+                <div key={i} style={{
+                  display: "flex", alignItems: "center", gap: 10, padding: "10px 12px",
+                  borderRadius: 12, border: `1.5px dashed ${COLORS.border}`, background: COLORS.cream,
+                }}>
+                  <span style={{ fontSize: 20, flexShrink: 0 }}>{item.icon}</span>
+                  <p style={{ fontFamily: FONTS.body, fontWeight: 600, fontSize: 13, color: COLORS.navy, lineHeight: 1.3, textAlign: "left" }}>
+                    {item.label.replace("\n", " ")}
                   </p>
                 </div>
               ))}
@@ -974,38 +986,61 @@ function RoadmapSection() {
           <p style={{ fontFamily: FONTS.body, fontSize: 12, fontWeight: 600, textTransform: "uppercase", letterSpacing: 2, color: COLORS.sage, marginBottom: 16 }}>Roadmap</p>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <h2 style={{ fontFamily: FONTS.display, fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 700, color: COLORS.navy, lineHeight: 1.35, letterSpacing: -0.8, marginBottom: 12 }}>발열에서 시작합니다</h2>
+          <h2 style={{ fontFamily: FONTS.display, fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 700, color: COLORS.navy, lineHeight: 1.35, letterSpacing: -0.8, marginBottom: 12 }}>발열에서 시작해, 모든 방향으로 확장합니다</h2>
         </FadeIn>
         <FadeIn delay={0.15}>
-          <p style={{ fontFamily: FONTS.body, fontSize: 15, lineHeight: 1.7, color: COLORS.warmGray, marginBottom: 40 }}>가장 긴급하고 빈번한 '발열'부터 시작해, 소아 건강 전 영역으로 확장합니다.</p>
+          <p style={{ fontFamily: FONTS.body, fontSize: 15, lineHeight: 1.7, color: COLORS.warmGray, marginBottom: 48 }}>가장 긴급한 '발열(해열제 포함)'에서 출발해, 부모의 요구와 상황에 따라 소아 건강 전 영역으로 넓혀갑니다.</p>
         </FadeIn>
         <FadeIn delay={0.2}>
-          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", gap: 0 }}>
-            {phases.map((p, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "center" }}>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 88 }}>
+          <div style={{ position: "relative", width: 380, height: 380, margin: "0 auto" }}>
+            {/* Dashed ring */}
+            <div style={{
+              position: "absolute", top: "50%", left: "50%",
+              width: ringRadius * 2, height: ringRadius * 2,
+              transform: "translate(-50%, -50%)",
+              borderRadius: "50%", border: `2px dashed ${COLORS.border}`,
+            }} />
+            {/* Center node */}
+            <div style={{
+              position: "absolute", top: "50%", left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: 100, height: 100, borderRadius: "50%",
+              display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+              background: COLORS.coral, color: "#fff",
+              boxShadow: `0 8px 24px ${COLORS.coral}44`,
+              zIndex: 2,
+            }}>
+              <span style={{ fontSize: 32, marginBottom: 2 }}>{center.icon}</span>
+              <span style={{ fontFamily: FONTS.body, fontWeight: 700, fontSize: 11, lineHeight: 1.2, whiteSpace: "pre-line", textAlign: "center" }}>발열</span>
+            </div>
+            {/* Surrounding nodes */}
+            {surrounding.map((item, i) => {
+              const angle = (i * 60 - 90) * (Math.PI / 180);
+              const x = Math.cos(angle) * ringRadius;
+              const y = Math.sin(angle) * ringRadius;
+              return (
+                <div key={i} style={{
+                  position: "absolute",
+                  top: `calc(50% + ${y}px)`,
+                  left: `calc(50% + ${x}px)`,
+                  transform: "translate(-50%, -50%)",
+                  display: "flex", flexDirection: "column", alignItems: "center",
+                  zIndex: 1,
+                }}>
                   <div style={{
-                    width: 52, height: 52, borderRadius: 14,
-                    display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24,
-                    background: p.status === "now" ? COLORS.coral : p.status === "next" ? COLORS.sageLight : COLORS.lightGray,
-                    border: p.status === "now" ? `2px solid ${COLORS.coral}` : `1.5px solid ${COLORS.border}`,
-                    boxShadow: p.status === "now" ? `0 4px 12px ${COLORS.coral}33` : "none",
-                    marginBottom: 8,
-                  }}>{p.icon}</div>
+                    width: 64, height: 64, borderRadius: "50%",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: 26, background: COLORS.cream,
+                    border: `1.5px dashed ${COLORS.border}`,
+                  }}>{item.icon}</div>
                   <p style={{
-                    fontFamily: FONTS.body, fontWeight: 600, fontSize: 12,
-                    color: p.status === "now" ? COLORS.coral : COLORS.navy,
-                    lineHeight: 1.3, whiteSpace: "pre-line",
-                  }}>{p.label}</p>
-                  {p.desc && (
-                    <p style={{ fontFamily: FONTS.body, fontSize: 10, color: COLORS.coral, fontWeight: 600, marginTop: 2 }}>{p.desc}</p>
-                  )}
+                    fontFamily: FONTS.body, fontWeight: 600, fontSize: 11,
+                    color: COLORS.navy, lineHeight: 1.3, marginTop: 4,
+                    whiteSpace: "pre-line", textAlign: "center",
+                  }}>{item.label}</p>
                 </div>
-                {i < phases.length - 1 && (
-                  <span style={{ fontSize: 14, color: COLORS.border, margin: "0 4px", paddingBottom: 28 }}>→</span>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
         </FadeIn>
       </div>
