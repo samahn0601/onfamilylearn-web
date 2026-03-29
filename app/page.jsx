@@ -599,6 +599,25 @@ function TeamSection() {
             </FadeIn>
           ))}
         </div>
+        {/* Org Chart */}
+        <FadeIn delay={0.4}>
+          <div style={{ marginTop: 48, textAlign: "center" }}>
+            <p style={{
+              fontFamily: FONTS.body, fontSize: 13, fontWeight: 600,
+              color: COLORS.warmGray, marginBottom: 16, letterSpacing: 0.5,
+            }}>Organization</p>
+            <img
+              src="/team/org-chart.png"
+              alt="온패밀리런 조직도 — 안상현 대표(Founder & CMO) → 레나 CEO → 하나·유리·서윤·지수·민지"
+              width={1200}
+              height={750}
+              style={{
+                width: "100%", maxWidth: 720, height: "auto",
+                borderRadius: 16, border: `1px solid ${COLORS.border}`,
+              }}
+            />
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
